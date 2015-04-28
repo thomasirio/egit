@@ -56,6 +56,10 @@
             android:name=".InfoActivity"
             android:label="@string/title_activity_info" >
         </activity>
+        <activity
+            android:name=".VisualizzaProfiloActivity"
+            android:label="@string/title_activity_visualizza_profilo" >
+        </activity>
     </application>
 
 </manifest>

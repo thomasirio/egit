@@ -260,7 +260,7 @@
             android:id="@+id/bottoneSalva"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="10dp"
             android:onClick="onClickSalva"
             android:text="@string/bottone_creaPartita"
             android:textColor="@color/rosso"
@@ -270,7 +270,7 @@
             android:id="@+id/tableRow11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
+            android:layout_marginLeft="30dp"
             android:gravity="center_horizontal|left" >
 
             <Button

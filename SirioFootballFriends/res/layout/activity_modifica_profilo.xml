@@ -4,7 +4,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
     
-<TableLayout 
+    <TableLayout 
     android:id="@+id/TableLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -33,7 +33,6 @@
         android:id="@+id/tableRow1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
-
         <TextView
             android:id="@+id/label_nome"
             android:layout_width="match_parent"
@@ -43,7 +42,6 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/darkblue"
             android:textStyle="bold" />
-
         <EditText
             android:id="@+id/nome"
             android:layout_width="wrap_content"
@@ -54,7 +52,6 @@
             android:textColor="@color/bianco"
             android:textColorHint="@color/bianco"
             android:textStyle="bold" >
-
             <requestFocus />
         </EditText>
     </TableRow>
@@ -63,7 +60,6 @@
         android:id="@+id/tableRow2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
-
         <TextView
             android:id="@+id/label_cognome"
             android:layout_width="wrap_content"
@@ -73,7 +69,6 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/darkblue"
             android:textStyle="bold" />
-
         <EditText
             android:id="@+id/cognome"
             android:layout_width="wrap_content"
@@ -84,14 +79,12 @@
             android:textColor="@color/bianco"
             android:textColorHint="@color/bianco"
             android:textStyle="bold" />
-
     </TableRow>
 
     <TableRow
         android:id="@+id/tableRow3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
-
         <TextView
             android:id="@+id/label_nickname"
             android:layout_width="wrap_content"
@@ -101,7 +94,6 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/darkblue"
             android:textStyle="bold" />
-
         <EditText
             android:id="@+id/nickname"
             android:layout_width="wrap_content"
@@ -111,30 +103,58 @@
             android:textColor="@color/bianco"
             android:textColorHint="@color/bianco"
             android:textStyle="bold" />
-
     </TableRow>
-
+    
     <TableRow
-        android:id="@+id/tableRow4"
-        android:layout_width="wrap_content"
+        android:id="@+id/tableRow5"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content" >
-
         <TextView
-            android:id="@+id/label_eta"
-            android:layout_width="wrap_content"
+            android:id="@+id/label_cellular"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:text="@string/label_eta"
+            android:text="@string/label_cellulare"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/darkblue"
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/eta"
+            android:id="@+id/cellulare"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="@string/eta"
+            android:hint="@string/cellulare"
+            android:inputType="phone"
+            android:textColor="@color/bianco"
+            android:textColorHint="@color/bianco"
+            android:textStyle="bold" >
+
+        </EditText>
+
+     </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/label_annonascita"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="@string/label_annonascita"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/darkblue"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/annonascita"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/annonascita"
             android:inputType="number"
             android:textColor="@color/bianco"
             android:textColorHint="@color/bianco"
@@ -143,7 +163,7 @@
     </TableRow>
 
     <TableRow
-        android:id="@+id/tableRow5"
+        android:id="@+id/tableRow7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
 
@@ -170,7 +190,7 @@
     </TableRow>
 
     <TableRow
-        android:id="@+id/tableRow6"
+        android:id="@+id/tableRow8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
 
@@ -185,7 +205,7 @@
             android:textStyle="bold" />
 
         <TableRow
-            android:id="@+id/tableRow9"
+            android:id="@+id/tableRow81"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" >
 
@@ -219,54 +239,9 @@
         </TableRow>
     </TableRow>
 
-    <TableRow
-        android:id="@+id/tableRow7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-
-        <TextView
-            android:id="@+id/label_ruolo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:text="@string/label_ruolo"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/darkblue"
-            android:textStyle="bold" />
-
-        <Spinner
-            android:id="@+id/spinner_ruolo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:entries="@array/ruolo" />
-
-    </TableRow>
-
-    <TableRow
-        android:id="@+id/tableRow8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-
-        <TextView
-            android:id="@+id/label_livello"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:text="@string/label_livello"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/darkblue"
-            android:textStyle="bold" />
-
-        <Spinner
-            android:id="@+id/spinner_livello"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:entries="@array/livello" />
-
-    </TableRow>
-    
+        
 	<TableRow
-            android:id="@+id/tableRow12"
+            android:id="@+id/tableRow9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" >
 

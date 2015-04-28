@@ -145,8 +145,7 @@ public class PartecipaActivity extends Activity {
 			    mylist.setTextFilterEnabled(true);			    
 			    // creo e istruisco l'adattatore  
 			    ArrayAdapter <String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, partitelist);  
-			    
-			    // inietto i dati  
+		        // inietto i dati  
 		        mylist.setAdapter(adapter); 
 		        intent=new Intent(this, ConfermaPartecipaActivity.class);
 			    // Definisco un listener per l'adattatore

@@ -76,4 +76,19 @@ public class HomeActivity extends Activity {
 		intent.putExtras(b); //intent x passaggio parametri
 		startActivity(intent);
 	}
+	
+	public void onClickLogout(View v) {
+		Intent intent=new Intent(this,MainActivity.class);
+		startActivity(intent);
+	}
+	
+	public void onClickInfo(View v) {
+		Intent intent=new Intent(this,InfoActivity.class);
+		Intent i=getIntent();
+		idprofilo= i.getStringExtra("idprofilo");
+		Bundle b=new Bundle();
+		b.putString("idprofilo", idprofilo); //passa chiave valore a activity_home
+		intent.putExtras(b); //intent x passaggio parametri
+		startActivity(intent);
+	}
 }

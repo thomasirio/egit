@@ -91,15 +91,13 @@
 
         <ListView
             android:id="@+id/listView1"
+            style="@color/darkblue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@color/bianco"
-            android:dividerHeight="1dp"
-            android:listSelector="@drawable/list_color_selector" >
+            android:background="@color/bianco" >
 
         </ListView>
-        
 
     </TableRow>
     

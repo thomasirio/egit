@@ -37,11 +37,12 @@ public class ProfiloActivity extends Activity {
 	private String cognome;
 	private String nickname;
 	private String citta;
-	private Integer eta;
+	private Integer annonascita;
 	private String sesso;
-	private String ruolo;
-	private String livello;
+	private Integer cellulare;
 	boolean sessochecked=false;
+	//private String anno_regular="^[0-9]{4,4}$";
+	//private String telefono_regular="^[0-9]{9,10}$";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -50,34 +51,6 @@ public class ProfiloActivity extends Activity {
 		Intent i=getIntent();
 		idcredenziali=i.getStringExtra("idcredenziali");
 		Toast.makeText(getApplicationContext(), "Ciao, crea il tuo profilo!", Toast.LENGTH_LONG).show();
-		
-		Spinner spinner_ruolo = (Spinner) findViewById(R.id.spinner_ruolo);
-		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-		        R.array.ruolo, android.R.layout.simple_spinner_item);
-		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		spinner_ruolo.setAdapter(adapter);
-		
-		Spinner spinner_livello = (Spinner) findViewById(R.id.spinner_livello);
-		ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,
-		        R.array.livello, android.R.layout.simple_spinner_item);
-		adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		spinner_livello.setAdapter(adapter2);
-		
-		spinner_ruolo.setOnItemSelectedListener(new OnItemSelectedListener() {
-			public void onItemSelected(AdapterView<?> adapter, View view, int pos,long id) 
-			{
-				ruolo= adapter.getItemAtPosition(pos).toString();	
-				Toast.makeText(adapter.getContext(), "Hai selezionato : "+ruolo,Toast.LENGTH_SHORT).show();
-			}
-			public void onNothingSelected(AdapterView<?> arg0) { }});
-		
-		spinner_livello.setOnItemSelectedListener(new OnItemSelectedListener() {
-			public void onItemSelected(AdapterView<?> adapter2, View view, int pos,long id) 
-			{
-				livello= adapter2.getItemAtPosition(pos).toString();	
-				Toast.makeText(adapter2.getContext(), "Hai selezionato : "+livello,Toast.LENGTH_SHORT).show();
-			}
-			public void onNothingSelected(AdapterView<?> arg0) { }});
 	}
 
 	@Override
@@ -109,17 +82,23 @@ public class ProfiloActivity extends Activity {
 		cognome= cognomedig.getText().toString();
 		TextView nicknamedig=(TextView)findViewById(R.id.nickname);
 		nickname= nicknamedig.getText().toString();
+		TextView celldig=(TextView)findViewById(R.id.cellulare);
+		String cellulareStr= (String)celldig.getText().toString();
 		TextView cittadig=(TextView)findViewById(R.id.citta);
 		citta= cittadig.getText().toString();
-		TextView etadig=(TextView)findViewById(R.id.eta);
-		String etaStr= etadig.getText().toString();
-		if(etaStr.equals(null)||etaStr=="")
-			eta=0;
-		else
-			eta=Integer.parseInt(etaStr);
-		//	if(eta<5||eta>80)
-		//		Toast.makeText(getApplicationContext(), "Inserire una eta' valida", Toast.LENGTH_LONG).show();
+		TextView etadig=(TextView)findViewById(R.id.annonascita);
+		String etaStr= (String)etadig.getText().toString();
 		
+		if(cellulareStr.equals("")||cellulareStr.equals(null))
+			cellulare=0;
+		else
+			cellulare=Integer.parseInt(cellulareStr);
+		
+		if(etaStr.equals(null)||etaStr.equals(""))
+			annonascita=0;
+		else
+			annonascita=Integer.parseInt(etaStr);
+			
 		//città non deve essere nullo
 		if(citta.equals("")||citta.equals(null))
 			Toast.makeText(getApplicationContext(), "Citta' non valida", Toast.LENGTH_LONG).show();
@@ -138,11 +117,9 @@ public class ProfiloActivity extends Activity {
 					jsonobj.put("cognome", cognome );
 					jsonobj.put("nickname", nickname );
 					jsonobj.put("citta", citta );
-					if(!etaStr.equals(null)||etaStr!="")
-					jsonobj.put("eta", etaStr );
+					jsonobj.put("annonascita", annonascita );
+					jsonobj.put("cellulare", cellulare );
 					jsonobj.put("sesso", sesso );
-					jsonobj.put("ruolo", ruolo );
-					jsonobj.put("livello", livello );
 					jsonobj.put("idcredenziali", idcredenziali );
 				
 					//creazione pacchetto post
@@ -162,8 +139,7 @@ public class ProfiloActivity extends Activity {
 					line = convertStreamToString(inputstream);
 					JSONObject myjson = new JSONObject(line);	        	     
 					String idprofilo=myjson.get("idprofilo").toString();
-					Toast.makeText(getApplicationContext(), "sono "+idprofilo, Toast.LENGTH_LONG).show();
-				
+					
 					Intent intent=new Intent(this,HomeActivity.class);
 					Bundle b=new Bundle();
 					b.putString("idprofilo", idprofilo); //passa chiave valore a activity_home

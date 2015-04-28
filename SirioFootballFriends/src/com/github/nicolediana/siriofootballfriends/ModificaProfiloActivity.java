@@ -37,14 +37,12 @@ public class ModificaProfiloActivity extends Activity {
 	private String cognome;
 	private String nickname;
 	private String citta;
-	private Integer eta;
+	private Integer annonascita;
 	private String sesso;
-	private String ruolo;
-	private String livello;
+	private Integer cellulare;
+	//private String linkfotoprofilo;
 	private String password;
 	String tiporichiesta;
-	Spinner spinner_ruolo;
-	Spinner spinner_livello;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -94,8 +92,10 @@ public class ModificaProfiloActivity extends Activity {
 		TextView cognomedig=(TextView)findViewById(R.id.cognome);
 		TextView nicknamedig=(TextView)findViewById(R.id.nickname);
 		TextView cittadig=(TextView)findViewById(R.id.citta);
-		TextView etadig=(TextView)findViewById(R.id.eta);
+		TextView annonascitadig=(TextView)findViewById(R.id.annonascita);
 		TextView pwDigitato=(TextView)findViewById(R.id.psw);
+		TextView celldig=(TextView)findViewById(R.id.cellulare);
+		
 		
 		nome= nomedig.getText().toString();
 		cognome= cognomedig.getText().toString();
@@ -103,14 +103,20 @@ public class ModificaProfiloActivity extends Activity {
 		citta= cittadig.getText().toString();
 		password= (String)pwDigitato.getText().toString();
 		
-		String etaStr= etadig.getText().toString();
-		if(etaStr.equals(null)||etaStr=="")
-			eta=0;
+		String cellulareStr= (String)celldig.getText().toString();
+		if(cellulareStr.equals(null)||cellulareStr.equals(""))
+			cellulare=0;
 		else
-			eta=Integer.parseInt(etaStr);
+			cellulare=Integer.parseInt(cellulareStr);
+		
+		String annonascitaStr= (String)annonascitadig.getText().toString();
+		if(annonascitaStr.equals(null)||annonascitaStr.equals(""))
+			annonascita=0;
+		else
+			annonascita=Integer.parseInt(annonascitaStr);
 
-		//if(eta<5||eta>80)
-		//	Toast.makeText(getApplicationContext(), "Inserire una eta' valida", Toast.LENGTH_LONG).show();
+		//if(annonascita<5||annonascita>80)
+		//	Toast.makeText(gannonascitapplicationContext(), "Inserire una annonascita' valida", Toast.LENGTH_LONG).show();
 		
 		//città non deve essere nullo
 		if(citta.equals("")||citta.equals(null))
@@ -125,11 +131,9 @@ public class ModificaProfiloActivity extends Activity {
 				jsonobj.put("cognome", cognome );
 				jsonobj.put("nickname", nickname );
 				jsonobj.put("citta", citta );
-				if(!etaStr.equals(null)||etaStr!="")
-					jsonobj.put("eta", etaStr );
+				jsonobj.put("annonascita", annonascita );
+				jsonobj.put("cellulare", cellulare );
 				jsonobj.put("sesso", sesso );
-				jsonobj.put("ruolo", ruolo );
-				jsonobj.put("livello", livello );
 				jsonobj.put("password", password );
 				jsonobj.put("idprofilo", idprofilo );
 				
@@ -212,34 +216,7 @@ public class ModificaProfiloActivity extends Activity {
 	}
 	
 		public void caricaProfilo() {
-		//Gestione degli spinner ruolo e livello
-		spinner_ruolo = (Spinner) findViewById(R.id.spinner_ruolo);
-		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-		        R.array.ruolo, android.R.layout.simple_spinner_item);
-		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		spinner_ruolo.setAdapter(adapter);
-		
-		spinner_livello = (Spinner) findViewById(R.id.spinner_livello);
-		ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,
-		        R.array.livello, android.R.layout.simple_spinner_item);
-		adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		spinner_livello.setAdapter(adapter2);
-		
-		spinner_ruolo.setOnItemSelectedListener(new OnItemSelectedListener() {
-			public void onItemSelected(AdapterView<?> adapter, View view, int pos,long id) 
-			{
-				ruolo= adapter.getItemAtPosition(pos).toString();	
-			}
-			public void onNothingSelected(AdapterView<?> arg0) { }});
-		
-		spinner_livello.setOnItemSelectedListener(new OnItemSelectedListener() {
-			public void onItemSelected(AdapterView<?> adapter2, View view, int pos,long id) 
-			{
-				livello= adapter2.getItemAtPosition(pos).toString();	
-			}
-			public void onNothingSelected(AdapterView<?> arg0) { }});
-
-		
+				
 		//LEGGI PROFILO
 		tiporichiesta="leggi";
 		JSONObject myjson= new JSONObject();
@@ -260,23 +237,29 @@ public class ModificaProfiloActivity extends Activity {
 			String line = "";
 			InputStream inputstream = httpresponse.getEntity().getContent();
 			line = convertStreamToString(inputstream);
-			JSONObject myjson2 = new JSONObject(line);	        	     
+			JSONObject myjson2 = new JSONObject(line);	 
 			
 			TextView nomedig=(TextView)findViewById(R.id.nome);
 			TextView cognomedig=(TextView)findViewById(R.id.cognome);
 			TextView nicknamedig=(TextView)findViewById(R.id.nickname);
 			TextView cittadig=(TextView)findViewById(R.id.citta);
-			TextView etadig=(TextView)findViewById(R.id.eta);
 			
 			sesso=myjson2.get("sesso").toString();
-			ruolo=myjson2.get("ruolo").toString();
-			livello=myjson2.get("livello").toString();
 			
 			nomedig.setText(myjson2.get("nome").toString());
 			cognomedig.setText(myjson2.get("cognome").toString());
 			nicknamedig.setText(myjson2.get("nickname").toString());
 			cittadig.setText(myjson2.get("citta").toString());
-			etadig.setText(myjson2.get("eta").toString());
+			if(!myjson2.get("annonascita").toString().equals("0"))
+			{
+				TextView annonascitadig=(TextView)findViewById(R.id.annonascita);
+				annonascitadig.setText(Integer.parseInt(myjson2.get("annonascita").toString()));
+			}
+			if(!myjson2.get("cellulare").toString().equals("0"))
+			{
+				TextView celldig=(TextView)findViewById(R.id.cellulare);
+				celldig.setText(Integer.parseInt(myjson2.get("cellulare").toString()));
+			}
 			
 			if(sesso.equals("M")){
 				RadioButton radio1 = (RadioButton)findViewById(R.id.radio_sessoM);
@@ -287,21 +270,6 @@ public class ModificaProfiloActivity extends Activity {
 				radio1.setChecked(true);
 			}
 			
-			//caricamento degli spinner da DB
-			String compareValue=ruolo;
-			if (!compareValue.equals(null)) {
-		         int spinnerPosition = adapter.getPosition(compareValue);
-		         spinner_ruolo.setSelection(spinnerPosition);
-		         spinnerPosition = 0;
-		     }		     
-		     
-		     compareValue = livello;
-		     if (!compareValue.equals(null)) {
-		         int spinnerPosition = adapter2.getPosition(compareValue);
-		         spinner_livello.setSelection(spinnerPosition);
-		         spinnerPosition = 0;
-		     }		     
-
 		}
 		catch (JSONException ex) {
 			ex.printStackTrace();
