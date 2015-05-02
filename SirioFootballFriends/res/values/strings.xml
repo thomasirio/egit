@@ -55,17 +55,13 @@
         <item>Amatoriale</item>
         <item>Esperto</item>
     </string-array>
-    <string-array name="tipoPartitaList">
-        <item>Calcio a 5</item>
-        <item>Calcio a 11</item>
-    </string-array>
 
     <string name="bottone_annulla">ANNULLA</string>
     <string name="label_nomeCampo">Campo</string>
     <string name="label_indirCampo">Indirizzo</string>
     <string name="label_data">Data</string>
     <string name="label_ora">Ora</string>
-    <string name="label_costo">Costo tot</string>
+    <string name="label_costo">Costo</string>
     <string name="label_provincia">Provincia</string>
     <string name="label_nmancanti">N° Giocatori</string>
     <string name="nomeCampo"> Nome Campetto</string>
@@ -104,15 +100,8 @@
     <string name="partite_perse">#</string>
     <string name="label_bidoni">Bidoni</string>
     <string name="bidoni">#</string>
-    <string name="label_tipoPartita">Tipo partita</string>
-    <string name="label_tipoTerreno">Tipo terreno</string>
-    <string name="label_coperto">Coperto</string>
-    <string name="coperto">Coperto/Scoperto</string>
-    <string name="tipoTerreno">erba sintetica ecc</string>
-    <string name="label_note">Note aggiuntive</string>
-    <string name="Note">Note...</string>
-    <string name="label_contatto">Contatto</string>
-    <string name="contatto">cell</string>
-    <string name="bottone_prosegui">PROSEGUI</string>
+    <string name="bottone_prossimaPartita">PROSSIMA PARTITA</string>
+    <string name="bottone_leMiePartite">LE MIE PARTITE</string>
+    <string name="title_activity_dettaglio_partita">DETTAGLIO PARTITA</string>
 
 </resources>

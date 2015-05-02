@@ -32,7 +32,7 @@ import android.widget.AdapterView.OnItemClickListener;
 
 public class PartecipaActivity extends Activity {
 
-	private String nomeServlet="/ServletExample/ServletPartita";
+	private String nomeServlet="/ServletExampleOld/ServletPartita";
 	
 	private String idprofilo;
 	private String citta;
@@ -150,8 +150,7 @@ public class PartecipaActivity extends Activity {
 		        intent=new Intent(this, ConfermaPartecipaActivity.class);
 			    // Definisco un listener per l'adattatore
 			    mylist.setOnItemClickListener(new OnItemClickListener() {  
-			    	@Override  
-				    public void onItemClick(AdapterView<?> adapter, final View view, int pos, long id){  
+			    	public void onItemClick(AdapterView<?> adapter, final View view, int pos, long id){  
 			    		indicepartita = idpart[pos].toString();
 				        //Toast.makeText(getApplicationContext(), indicepartita, Toast.LENGTH_LONG).show();
 				        intent.putExtra("idpartita", indicepartita); //intent x passaggio parametri

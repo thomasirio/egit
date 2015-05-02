@@ -25,7 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class RegistrazioneActivity extends Activity {
-	private String nomeServlet="/ServletExample/ServletCredenziali";
+	private String nomeServlet="/ServletExampleOld/ServletCredenziali";
 			
 	private String email;
 	private String password;

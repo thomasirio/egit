@@ -22,7 +22,7 @@ import android.widget.Toast;
 
 public class ConfermaPartecipaActivity extends Activity {
 	
-	private String nomeServlet="/ServletExample/ServletPartita";
+	private String nomeServlet="/ServletExampleOld/ServletPartita";
 		
 	private String idpartita;
 	private String idprofilo;

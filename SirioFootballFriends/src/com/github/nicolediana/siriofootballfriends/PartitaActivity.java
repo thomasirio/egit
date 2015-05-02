@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
+import java.util.Date;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -14,7 +14,6 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.json.JSONArray;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -26,12 +25,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class PartitaActivity extends Activity {
-	private String nomeServlet="/ServletExample/ServletPartita";
+	private String nomeServlet="/ServletExampleOld/ServletPartita";
 			
 	String idprofilo;
 	private String nomecampo;
@@ -39,16 +39,10 @@ public class PartitaActivity extends Activity {
 	private String provincia;
 	private String citta;
 	private Float costo;
-	private String coperto;
-	private String terreno;
-	private String note;
+	private Integer nmancanti;
 	private String data;
 	private String ora;
 	private String amministratore;
-	private String contatto;
-	//ArrayList<String> tipopartitalist;
-	private String tipopartita;
-	private String tipoPartitaList;
 			
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -56,23 +50,8 @@ public class PartitaActivity extends Activity {
 		setContentView(R.layout.activity_partita);
 		Intent i=getIntent();
 		idprofilo= i.getStringExtra("idprofilo");
-		//Toast.makeText(getApplicationContext(), "Organizza una partita !", Toast.LENGTH_LONG).show();
-		amministratore=i.getStringExtra("idprofilo");
-		//da idprofilo prendere num cell dell'amministratore else salvare il num inserito nel db in tab profilo
-		//caricare lo spinner
-		//caricaTipoPartito();
-		Spinner spinner_tipopartita = (Spinner) findViewById(R.id.spinnerTipoPartita);
-		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.tipoPartitaList, android.R.layout.simple_spinner_item);
-		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		spinner_tipopartita.setAdapter(adapter);
-		
-		spinner_tipopartita.setOnItemSelectedListener(new OnItemSelectedListener() {
-			public void onItemSelected(AdapterView<?> adapter, View view, int pos,long id) 
-			{
-				tipoPartitaList= adapter.getItemAtPosition(pos).toString();	
-			}
-			public void onNothingSelected(AdapterView<?> arg0) { }});
-			
+		Toast.makeText(getApplicationContext(), "Organizza una partita !", Toast.LENGTH_LONG).show();
+		amministratore=idprofilo;
 	}
 
 	@Override
@@ -117,20 +96,14 @@ public void onClickSalva(View v) throws UnsupportedEncodingException {
 		citta= cittadig.getText().toString();
 		TextView provinciadig=(TextView)findViewById(R.id.provincia);
 		provincia= provinciadig.getText().toString();
+		TextView nmancantidig=(TextView)findViewById(R.id.nmancanti);
+		nmancanti= Integer.parseInt(nmancantidig.getText().toString());
 		TextView datadig=(TextView)findViewById(R.id.data);
 		data= datadig.getText().toString();
 		TextView oradig=(TextView)findViewById(R.id.ora);
 		ora= oradig.getText().toString();
 		TextView costodig=(TextView)findViewById(R.id.costo);
 		costo= Float.parseFloat(costodig.getText().toString());
-		TextView celldig=(TextView)findViewById(R.id.cellulare);
-		String cellulareStr= (String)celldig.getText().toString();
-		TextView tipoterrenodig=(TextView)findViewById(R.id.tipoTerreno);
-		terreno= tipoterrenodig.getText().toString();
-		TextView copertodig=(TextView)findViewById(R.id.coperto);
-		coperto= copertodig.getText().toString();
-		TextView notedig=(TextView)findViewById(R.id.note);
-		note= notedig.getText().toString();
 		
 		//città non deve essere nullo
 		if(citta.equals("")||citta.equals(null)||provincia.equals("")||provincia.equals(null))
@@ -145,16 +118,12 @@ public void onClickSalva(View v) throws UnsupportedEncodingException {
 				jsonobj.put("indirizzocampo", indirizzocampo );
 				jsonobj.put("provincia", provincia );
 				jsonobj.put("citta", citta );
-				jsonobj.put("contatto", cellulareStr );
+				jsonobj.put("nmancanti", nmancanti.toString() );
 				jsonobj.put("costo", costo.toString() );
 				jsonobj.put("data", data );
 				jsonobj.put("ora", ora );
 				jsonobj.put("amministratore", amministratore );
 				jsonobj.put("idprofilo", idprofilo );
-				jsonobj.put("terreno", terreno );
-				jsonobj.put("coperto", coperto );
-				jsonobj.put("note", note );
-				jsonobj.put("tipopartita", tipoPartitaList );
 				
 				//creazione pacchetto post
 				StringEntity entity = new StringEntity(jsonobj.toString());
@@ -166,23 +135,17 @@ public void onClickSalva(View v) throws UnsupportedEncodingException {
 				httppostreq.setEntity(entity);
 				HttpResponse httpresponse = httpclient.execute(httppostreq);
 				
-				
+				/*
 				 //recupero della risposta
 				String line = "";
 				InputStream inputstream = httpresponse.getEntity().getContent();
 				line = convertStreamToString(inputstream);
 				JSONObject myjson = new JSONObject(line);	        	     
 				String idpartita=myjson.get("idpartita").toString();
-				
-				/*if(tipopartita.equals("Calcio a 5"))
-					Intent intent=new Intent(this,CalcioA5Activity.class);
-				if(tipopartita.equals("Calcio a 11"))
-					Intent intent=new Intent(this,CalcioA11Activity.class);
 				*/
 				Intent intent=new Intent(this,HomeActivity.class);
 				Bundle b=new Bundle();
 			    b.putString("idprofilo", idprofilo); //passa chiave valore a activity_home
-			    b.putString("idpartita", idpartita);
 			    intent.putExtras(b); //intent x passaggio parametri
 			    startActivity(intent);
 			    }
@@ -209,7 +172,7 @@ public void onClickSalva(View v) throws UnsupportedEncodingException {
 		startActivity(intent);
 	}
 	
-	private String convertStreamToString(InputStream is) {
+	/*private String convertStreamToString(InputStream is) {
 	    String line = "";
 	    StringBuilder total = new StringBuilder();
 	    BufferedReader rd = new BufferedReader(new InputStreamReader(is));
@@ -222,61 +185,6 @@ public void onClickSalva(View v) throws UnsupportedEncodingException {
 	    }
 	return total.toString();
 	}
-	
-/*	private void caricaTipoPartito(){
-		//LEGGI PROFILO
-				String tiporichiesta="caricaTipoPartita";
-				JSONObject myjson= new JSONObject();
-				try{
-					//creazione della Json
-					myjson.put("tiporichiesta", tiporichiesta );
-					myjson.put("citta", "citta" );
-					myjson.put("provincia", "provincia" );
-					//creazione pacchetto post
-					StringEntity entity = new StringEntity(myjson.toString());
-					StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-					StrictMode.setThreadPolicy(policy);
-					DefaultHttpClient httpclient = new DefaultHttpClient();
-					HttpPost httppostreq = new HttpPost(MainActivity.urlServlet+nomeServlet);
-					entity.setContentType("application/json;charset=UTF-8");
-					httppostreq.setEntity(entity);
-					HttpResponse httpresponse = httpclient.execute(httppostreq);
-					//risposta
-					String line = "";
-					InputStream inputstream = httpresponse.getEntity().getContent();
-					line = convertStreamToString(inputstream);
-					JSONObject myjson2 = new JSONObject(line);	 
-					JSONArray json_array = myjson2.getJSONArray("jsonVector");
-					int size = json_array.length();
-					for (int i = 0; i < size; i++) {
-						String tipo = json_array.getJSONObject(i).toString();
-						tipopartitalist.add(tipo);
-						Toast.makeText(getApplicationContext(), "Tipo:" + tipo , Toast.LENGTH_LONG).show();
-						
-					}				
-					
-					Spinner mySpinner = (Spinner) findViewById(R.id.spinnerTipoPartita);
-					ArrayAdapter<String> adapter = new ArrayAdapter<String>(PartitaActivity.this,android.R.layout.simple_spinner_dropdown_item,tipopartitalist);
-					mySpinner.setAdapter(adapter);
-					mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-						public void onItemSelected(AdapterView<?> adapter, View view, int pos,long id) 
-						{
-							tipopartita= adapter.getItemAtPosition(pos).toString();	
-						}
-						public void onNothingSelected(AdapterView<?> arg0) { }});
-	
-				}
-				catch (JSONException ex) {
-					ex.printStackTrace();
-				}
-				catch(UnsupportedEncodingException e){e.printStackTrace();}
-				catch (ClientProtocolException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IOException e2) {
-					// TODO Auto-generated catch block
-					e2.printStackTrace();
-				}
-			}*/
+	*/
 
 }

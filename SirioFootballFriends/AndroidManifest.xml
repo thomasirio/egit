@@ -60,6 +60,10 @@
             android:name=".VisualizzaProfiloActivity"
             android:label="@string/title_activity_visualizza_profilo" >
         </activity>
+        <activity
+            android:name=".DettaglioPartitaActivity"
+            android:label="@string/title_activity_dettaglio_partita" >
+        </activity>
     </application>
 
 </manifest>

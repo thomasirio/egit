@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|center_horizontal|center"
-            android:text="@string/Partecipa"
+            android:text="@string/title_activity_dettaglio_partita"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/bianco"
             android:textSize="25sp"

@@ -30,7 +30,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class VisualizzaProfiloActivity extends Activity {
-	private String nomeServlet="/ServletExample/ServletProfilo";
+	private String nomeServlet="/ServletExampleOld/ServletProfilo";
 	
 	String idprofilo;
 	//private String nome;
