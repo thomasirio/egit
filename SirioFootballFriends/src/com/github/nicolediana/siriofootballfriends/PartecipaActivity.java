@@ -150,7 +150,8 @@ public class PartecipaActivity extends Activity {
 		        intent=new Intent(this, ConfermaPartecipaActivity.class);
 			    // Definisco un listener per l'adattatore
 			    mylist.setOnItemClickListener(new OnItemClickListener() {  
-			    	public void onItemClick(AdapterView<?> adapter, final View view, int pos, long id){  
+			    	@Override  
+				    public void onItemClick(AdapterView<?> adapter, final View view, int pos, long id){  
 			    		indicepartita = idpart[pos].toString();
 				        //Toast.makeText(getApplicationContext(), indicepartita, Toast.LENGTH_LONG).show();
 				        intent.putExtra("idpartita", indicepartita); //intent x passaggio parametri

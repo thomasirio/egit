@@ -19,7 +19,7 @@ public class HomeActivity extends Activity {
 		//recupera parametro passato
 		Intent i=getIntent();
 		idprofilo= i.getStringExtra("idprofilo");
-		Toast.makeText(getApplicationContext(), "Benvenuto !", Toast.LENGTH_LONG).show();
+		//Toast.makeText(getApplicationContext(), "Benvenuto !", Toast.LENGTH_LONG).show();
 	}
 
 	@Override

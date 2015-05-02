@@ -27,6 +27,117 @@
         android:textColor="@color/bianco"
         android:textStyle="bold" />
 
+     <TableRow
+        android:id="@+id/tableRow8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/label_tipoPartita"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="@string/label_tipoPartita"
+            android:textAppearance="?android:attr/textAppearanceMedium" 
+			android:textColor="@color/darkblue"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/spinnerTipoPartita"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/bianco" />
+
+    </TableRow>
+    
+    <TableRow
+        android:id="@+id/tableRow14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/label_contatto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="@string/label_contatto"
+            android:textAppearance="?android:attr/textAppearanceMedium" 
+			android:textColor="@color/darkblue"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/cellulare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/contatto"
+            android:inputType="phone"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/bianco"
+            android:textColorHint="@color/bianco"
+            android:textStyle="bold" />
+
+		<requestFocus />
+
+    </TableRow>    
+    
+   <TableRow
+        android:id="@+id/tableRow6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/label_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="@string/label_data"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/darkblue"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/data_hint"
+            android:inputType="date"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/bianco"
+            android:textColorHint="@color/bianco"
+            android:textStyle="bold" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/label_ora"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="@string/label_ora"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/darkblue"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/ora"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/ora_hint"
+            android:inputType="time"
+            android:textColor="@color/bianco"
+            android:textColorHint="@color/bianco"
+            android:textStyle="bold" />
+
+    </TableRow>
+
     <TableRow
         android:id="@+id/tableRow1"
         android:layout_width="match_parent"
@@ -51,8 +162,7 @@
             android:textColor="@color/bianco"
             android:textColorHint="@color/bianco"
             android:textStyle="bold" >
-
-            <requestFocus />
+            
         </EditText>
     </TableRow>
 
@@ -137,62 +247,6 @@
 
     </TableRow>
 
-    <TableRow
-        android:id="@+id/tableRow6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-
-        <TextView
-            android:id="@+id/label_data"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:text="@string/label_data"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/darkblue"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/data"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/data_hint"
-            android:inputType="date"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/bianco"
-            android:textColorHint="@color/bianco"
-            android:textStyle="bold" />
-
-    </TableRow>
-
-    <TableRow
-        android:id="@+id/tableRow7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-
-        <TextView
-            android:id="@+id/label_ora"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:text="@string/label_ora"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/darkblue"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/ora"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/ora_hint"
-            android:inputType="time"
-            android:textColor="@color/bianco"
-            android:textColorHint="@color/bianco"
-            android:textStyle="bold" />
-
-    </TableRow>
 
     <TableRow
         android:id="@+id/tableRow4"
@@ -222,33 +276,81 @@
 
     </TableRow>
     
-    	<TableRow
+    <TableRow
             android:id="@+id/tableRow12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" >
 
-		<TextView
-		    android:id="@+id/label_nmancanti"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:layout_marginLeft="15dp"
-		    android:text="@string/label_nmancanti"
-		    android:textAppearance="?android:attr/textAppearanceMedium"
-		    android:textColor="@color/darkblue"
-		    android:textStyle="bold" />
+    		<TextView
+    		    android:id="@+id/label_tipoTerreno"
+    		    android:layout_width="wrap_content"
+    		    android:layout_height="wrap_content"
+    		    android:layout_marginLeft="15dp"
+	            android:text="@string/label_tipoTerreno"
+	            android:textAppearance="?android:attr/textAppearanceMedium"
+	            android:textColor="@color/darkblue"
+	            android:textStyle="bold" />
 
-		<EditText
-		    android:id="@+id/nmancanti"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:ems="10"
-		    android:hint="@string/nmancanti"
-		    android:inputType="number"
-		    android:textColor="@color/bianco"
-		    android:textColorHint="@color/bianco"
-		    android:textStyle="bold" />
+    		<EditText
+    		    android:id="@+id/tipoTerreno"
+    		    android:layout_width="wrap_content"
+    		    android:layout_height="wrap_content"
+    		    android:ems="10"
+            	android:hint="@string/tipoTerreno"
+            	android:textColor="@color/bianco"
+           		android:textColorHint="@color/bianco"
+            	android:textStyle="bold" />  		
 
     </TableRow>
+    <TableRow
+    		    android:id="@+id/tableRow9"
+    		    android:layout_width="wrap_content"
+    		    android:layout_height="wrap_content" >
+
+    			<TextView
+    			    android:id="@+id/label_coperto"
+    			    android:layout_width="wrap_content"
+    			    android:layout_height="wrap_content"
+    			    android:layout_marginLeft="15dp"
+		            android:text="@string/label_coperto"
+		            android:textAppearance="?android:attr/textAppearanceMedium"
+		            android:textColor="@color/darkblue"
+		            android:textStyle="bold" />
+
+    			<EditText
+    			    android:id="@+id/coperto"
+    			    android:layout_width="wrap_content"
+    			    android:layout_height="wrap_content" 
+					android:hint="@string/coperto"
+            		android:textColor="@color/bianco"
+           			android:textColorHint="@color/bianco"
+            		android:textStyle="bold" />
+
+    		</TableRow>
+    		
+    		<TableRow
+		        android:id="@+id/tableRow13"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content" >
+		
+		        <TextView
+		            android:id="@+id/label_note"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginLeft="15dp"
+		            android:text="@string/label_note"
+		            android:textAppearance="?android:attr/textAppearanceMedium"
+		            android:textColor="@color/darkblue"
+		            android:textStyle="bold" />
+		        <EditText
+		            android:id="@+id/note"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:ems="10" 
+					android:textColor="@color/bianco"
+            		android:textStyle="bold" />
+		            
+		    </TableRow>
     
     <TableRow
         android:id="@+id/tableRow10"
@@ -285,6 +387,7 @@
         </TableRow>
 
     </TableRow>
+
 
 </TableLayout>
 
